@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login | Kahady</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-blue-900 h-screen flex items-center justify-center px-4">
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+    <div class="max-w-md w-full bg-white p-10 rounded-3xl shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-800">Staff Portal</h1>
+            <p class="text-gray-500 text-sm">Authorized Personnel Only</p>
+        </div>
+
+        <form onsubmit="checkLogin(event)" class="space-y-4">
+            <input type="password" id="adminPass" placeholder="Enter Admin Password" 
+                   class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" required>
+            <button class="w-full bg-blue-700 text-white font-bold py-4 rounded-xl hover:bg-blue-800 transition">
+                Access Dashboard
+            </button>
+        </form>
+        <p id="errorMsg" class="text-red-500 text-sm mt-4 text-center hidden">Incorrect Password. Try again.</p>
+    </div>
+
+    <script>
+        function checkLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPass').value;
+            
+            // SET YOUR PASSWORD HERE (e.g., 'kahady2026')
+            if (pass === 'kahady2026') {
+                sessionStorage.setItem('isAdmin', 'true');
+                window.location.href = 'dashboard.html';
+            } else {
+                document.getElementById('errorMsg').classList.remove('hidden');
+            }
+        }
+        function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}
+    </script>
+</body>
+</html>

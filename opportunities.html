@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opportunities | Kahady</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-blue-50">
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+    <div class="flex flex-col md:flex-row gap-10 p-20 justify-center">
+        <div class="bg-white p-10 rounded-xl shadow-lg text-center">
+            <h2 class="text-2xl font-bold mb-4">Study Abroad</h2>
+            <a href="applications.html" class="bg-blue-600 text-white px-6 py-2 rounded">Apply Now</a>
+        </div>
+        <div class="bg-white p-10 rounded-xl shadow-lg text-center">
+            <h2 class="text-2xl font-bold mb-4">Work Abroad</h2>
+            <a href="applications.html" class="bg-green-600 text-white px-6 py-2 rounded">Apply Now</a>
+        </div>
+    </div>
+    <footer class="bg-blue-900 text-white py-12 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <div>
+            <h3 class="text-xl font-bold mb-4">KAHADY Travel & Tour</h3>
+            <p class="text-blue-200 text-sm leading-relaxed">
+                Your premier partner for international travel, visa consultancy, and global opportunities. We make your journey seamless.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+                <li class="flex items-center gap-2">📍 Accra, Ghana</li>
+                <li class="flex items-center gap-2">📞 +233 (0) 24 XXX XXXX</li>
+                <li class="flex items-center gap-2">✉️ info@kahadytravel.com</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-blue-100">
+                <a href="about.html" class="hover:underline">About Us</a>
+                <a href="services.html" class="hover:underline">Our Services</a>
+                <a href="destinations.html" class="hover:underline">Destinations</a>
+                <a href="applications.html" class="hover:underline">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-300">
+        &copy; 2026 Kahady Travel and Tour. All Rights Reserved.
+    </div>
+</footer>
+<script>function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}</script>
+</body>
+</html>

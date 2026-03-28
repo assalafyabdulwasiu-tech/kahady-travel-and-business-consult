@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kahady Travel And Business Consult | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src="images/logo.jpeg"FFA Logo" width="150">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+    <section class="py-10 bg-yellow-50 border-y border-yellow-200">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-2 mb-6">
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded announcement-tag">LATEST NEWS</span>
+            <h2 class="text-2xl font-bold text-blue-900">Announcements</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-600">
+                <p class="text-xs text-gray-400 mb-1">March 25, 2026</p>
+                <h4 class="font-bold text-blue-800">Canada Work Permit Slots Open!</h4>
+                <p class="text-sm text-gray-600">We have received 50 new slots for agricultural work permits in Canada. Contact us today to start.</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-purple-600">
+                <p class="text-xs text-gray-400 mb-1">March 24, 2026</p>
+                <h4 class="font-bold text-purple-800">New Dubai 3-Month Tourist Visa</h4>
+                <p class="text-sm text-gray-600">The 90-day tourist visa for Dubai is back. Processing time is now only 3 working days.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/233240000000" class="whatsapp-float" target="_blank">
+    <svg width="35" height="35" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+    <section class="py-10 bg-yellow-50 border-y border-yellow-200">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-2 mb-6">
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded announcement-tag">LATEST NEWS</span>
+            <h2 class="text-2xl font-bold text-blue-900">Announcements</h2>
+        </div>
+        
+        <div id="noticeDisplay" class="grid md:grid-cols-1 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600">
+                <h4 class="font-bold text-blue-800">Welcome to Kahady Travel and Tour</h4>
+                <p class="text-sm text-gray-600">Check back here for the latest visa updates and flight deals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function displayNotice() {
+        const savedNotice = JSON.parse(localStorage.getItem('kahady_notice'));
+        const displayArea = document.getElementById('noticeDisplay');
+
+        if (savedNotice) {
+            displayArea.innerHTML = `
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-500 animate-pulse-subtle">
+                    <p class="text-xs text-gray-400 mb-1">${savedNotice.date}</p>
+                    <h4 class="font-bold text-blue-900 text-lg">${savedNotice.title}</h4>
+                    <p class="text-sm text-gray-700 mt-2">${savedNotice.body}</p>
+                </div>
+            `;
+        }
+    }
+    // Run when home page loads
+    displayNotice();
+    function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}
+</script>
+    
+    <header class="hero-bg">
+        <div class="px-4">
+            <h1 class="text-5xl font-extrabold mb-4">Your Trusted Partner for Travel, Visas, and International Opportunities.</h1>
+            <div class="flex justify-center gap-4 mt-8">
+                <a href="services.html" class="bg-blue-600 px-8 py-3 rounded-lg font-bold">Book a Trip</a>
+                <a href="applications.html" class="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold">Apply for Visa</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Travel Packages</div>
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Passport Processing</div>
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Birth Certificates</div>
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Visa Processing</div>
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Work Abroad</div>
+        <div class="p-4 bg-white shadow rounded text-center font-bold">Air Ticket </div>
+    </section>
+    <footer class="bg-blue-900 text-white py-12 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <div>
+            <h3 class="text-xl font-bold mb-4">Kahady Travel And Business Consult</h3>
+            <p class="text-blue-200 text-sm leading-relaxed">
+                Your premier partner for international travel, visa consultancy, and global opportunities. We make your journey seamless.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+                <li class="flex items-center gap-2">📍 Accra, Ghana</li>
+                <li class="flex items-center gap-2">📞 +233 (0) 24 XXX XXXX</li>
+                <li class="flex items-center gap-2">✉️ info@kahadytravel.com</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-blue-100">
+                <a href="about.html" class="hover:underline">About Us</a>
+                <a href="services.html" class="hover:underline">Our Services</a>
+                <a href="destinations.html" class="hover:underline">Destinations</a>
+                <a href="applications.html" class="hover:underline">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-300">
+        &copy; 2026 kahady Travel And Business Consult. All Rights Reserved.
+    </div>
+</footer>
+</body>
+</html>

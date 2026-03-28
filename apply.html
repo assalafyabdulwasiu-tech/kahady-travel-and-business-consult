@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now | kahady Travel And Business Consult</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+    <div class="bg-blue-800 py-16 text-center text-white px-4">
+        <h1 class="text-4xl font-extrabold mb-2">Start Your Journey Today</h1>
+        <p class="text-blue-100 max-w-2xl mx-auto italic">Choose the pathway that fits your goals. Our experts at Kahady are ready to guide you through the process.</p>
+    </div>
+
+    <main class="max-w-6xl mx-auto py-16 px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-t-4 border-blue-600 card-hover">
+                <div class="text-4xl mb-4">🎓</div>
+                <h2 class="text-2xl font-bold mb-3 text-blue-900">Study Abroad</h2>
+                <p class="text-gray-500 mb-6 text-sm">Apply for admissions and student visas for universities in the UK, Canada, and USA.</p>
+                <a href="applications.html" class="block w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">Start Study Application</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-t-4 border-green-600 card-hover">
+                <div class="text-4xl mb-4">💼</div>
+                <h2 class="text-2xl font-bold mb-3 text-blue-900">Work Abroad</h2>
+                <p class="text-gray-500 mb-6 text-sm">Secure your work permits and international employment opportunities effortlessly.</p>
+                <a href="applications.html" class="block w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition">Start Work Application</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-t-4 border-yellow-500 card-hover">
+                <div class="text-4xl mb-4">🛂</div>
+                <h2 class="text-2xl font-bold mb-3 text-blue-900">Visa & Tours</h2>
+                <p class="text-gray-500 mb-6 text-sm">Apply for tourist visas, passport processing, or birth certificate assistance.</p>
+                <a href="applications.html" class="block w-full bg-yellow-500 text-white py-3 rounded-lg font-bold hover:bg-yellow-600 transition">Start General Application</a>
+            </div>
+
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-t-4 border-purple-600 card-hover">
+    <div class="text-4xl mb-4">🎫</div>
+    <h2 class="text-2xl font-bold mb-3 text-blue-900">Air Tickets</h2>
+    <p class="text-gray-500 mb-6 text-sm">Reserve your seats for local or international flights with Kahady’s priority booking.</p>
+    <a href="applications.html" class="block w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition">Start Ticket Booking</a>
+</div>
+    </main>
+    <footer class="bg-blue-900 text-white py-12 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <div>
+            <h3 class="text-xl font-bold mb-4">Kahady Travel And Business Consult</h3>
+            <p class="text-blue-200 text-sm leading-relaxed">
+                Your premier partner for international travel, visa consultancy, and global opportunities. We make your journey seamless.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+                <li class="flex items-center gap-2">📍 Accra, Ghana</li>
+                <li class="flex items-center gap-2">📞 +233 (0) 24 XXX XXXX</li>
+                <li class="flex items-center gap-2">✉️ info@kahadytravel.com</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-blue-100">
+                <a href="about.html" class="hover:underline">About Us</a>
+                <a href="services.html" class="hover:underline">Our Services</a>
+                <a href="destinations.html" class="hover:underline">Destinations</a>
+                <a href="applications.html" class="hover:underline">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-300">
+        &copy; 2026 kahady Travel And Business Consult. All Rights Reserved.
+    </div>
+</footer>
+<script>function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}</script>
+
+    </body>
+</html>

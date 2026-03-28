@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Kahady Travel And Business Consult</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+    <main class="flex-grow flex items-center justify-center py-20 px-4">
+        <div class="max-w-md w-full bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+            <div class="text-center mb-8">
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">💳</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Secure Checkout</h2>
+                <p class="text-gray-500 text-sm">Complete your Kahady service payment</p>
+            </div>
+
+            <form id="paymentForm" class="space-y-5">
+    <div>
+        <label class="block text-sm font-semibold text-gray-600 mb-1">Email Address</label>
+        <input type="email" id="email-address" placeholder="email@example.com" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" required />
+    </div>
+    
+    <div>
+        <label class="block text-sm font-semibold text-gray-600 mb-1">Enter Amount to Pay (GHS)</label>
+        <input type="number" id="amount" placeholder="0.00" step="0.01" min="1" class="w-full p-4 border rounded-xl bg-white font-bold text-blue-700 focus:ring-2 focus:ring-blue-500 outline-none" required />
+        <p class="text-xs text-gray-400 mt-1">* Enter the total amount discussed with Kahady Travel & Tour.</p>
+    </div>
+
+    <button type="submit" class="w-full bg-blue-700 text-white font-bold py-4 rounded-xl hover:bg-blue-800 transition-all shadow-lg active:scale-95">
+        Pay Now with Paystack
+    </button>
+</form>
+
+            <div class="mt-8 flex justify-center items-center gap-4 grayscale opacity-60">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/MTN_Group_logo.svg" class="h-6" alt="MTN">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-6" alt="Mastercard">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" class="h-4" alt="Visa">
+            </div>
+            <p class="text-center text-[10px] text-gray-400 mt-6 uppercase tracking-widest font-bold">Secure SSL Encryption 🔒</p>
+        </div>
+    </main>
+<div id="receiptModal" class="fixed inset-0 bg-gray-900 bg-opacity-90 hidden flex items-center justify-center z-[100] p-4">
+    <div id="printableReceipt" class="bg-white w-full max-w-lg p-8 rounded-lg shadow-2xl relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+            <h1 class="text-9xl font-black rotate-45">KAHADY</h1>
+        </div>
+
+        <div class="flex justify-between items-start border-b-2 border-blue-900 pb-4 mb-6">
+            <div>
+                <h2 class="text-2xl font-black text-blue-900">KAHADY TRAVEL</h2>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Official Payment Receipt</p>
+            </div>
+            <div class="text-right">
+                <p class="text-xs text-gray-400" id="receiptDate"></p>
+                <p class="text-xs font-bold text-blue-600" id="receiptRef"></p>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="flex justify-between">
+                <span class="text-gray-500 text-sm">Customer Name:</span>
+                <span class="font-bold text-gray-800" id="rName">---</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-500 text-sm">Service:</span>
+                <span class="font-bold text-gray-800" id="rService">Travel Service</span>
+            </div>
+            <div class="flex justify-between border-t pt-4">
+                <span class="text-gray-900 font-bold">Total Paid:</span>
+                <span class="text-xl font-black text-green-600" id="rAmount">GHS 0.00</span>
+            </div>
+        </div>
+
+        <div class="mt-8 border-2 border-green-500 text-green-500 font-black text-2xl p-2 inline-block rotate-[-15deg] uppercase rounded-md opacity-70">
+            PAID SUCCESSFULLY
+        </div>
+
+        <div class="mt-10 pt-6 border-t text-center">
+            <p class="text-[10px] text-gray-400 uppercase font-bold">Thank you for choosing Kahady Travel & Tour</p>
+            <p class="text-[9px] text-gray-300 mt-1">This is a digitally generated receipt.</p>
+        </div>
+
+        <div class="mt-8 flex gap-3 no-print">
+            <button onclick="window.print()" class="flex-1 bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-black transition">Print Receipt</button>
+            <button onclick="window.location.href='index.html'" class="flex-1 bg-gray-100 text-gray-600 py-3 rounded-lg font-bold hover:bg-gray-200 transition">Close</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* CSS to hide buttons when printing */
+    @media print {
+        body * { visibility: hidden; }
+        #printableReceipt, #printableReceipt * { visibility: visible; }
+        #printableReceipt { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; }
+        .no-print { display: none !important; }
+    }
+</style>
+
+<script>
+    function payWithPaystack(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById("email-address").value;
+        const amount = document.getElementById("amount").value;
+
+        let handler = PaystackPop.setup({
+            key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxx', // REPLACE WITH YOUR KEY
+            email: email,
+            amount: amount * 100, 
+            currency: "GHS",
+            ref: 'KHD-' + Math.floor((Math.random() * 1000000000) + 1), 
+            callback: function(response) {
+                // SUCCESS! Show Receipt
+                document.getElementById('receiptModal').classList.remove('hidden');
+                document.getElementById('receiptDate').innerText = new Date().toLocaleDateString();
+                document.getElementById('receiptRef').innerText = "REF: " + response.reference;
+                document.getElementById('rAmount').innerText = "GHS " + amount;
+                
+                // Get name from localStorage if available
+                const apps = JSON.parse(localStorage.getItem('kahady_apps')) || [];
+                if(apps.length > 0) {
+                    const lastUser = apps[apps.length - 1];
+                    document.getElementById('rName').innerText = lastUser.name;
+                    document.getElementById('rService').innerText = lastUser.service;
+                }
+            }
+        });
+        handler.openIframe();
+    }
+    function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}
+</script>
+    <footer class="bg-blue-900 text-white py-12 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <div>
+            <h3 class="text-xl font-bold mb-4">Kahady Travel And Business Consult</h3>
+            <p class="text-blue-200 text-sm leading-relaxed">
+                Your premier partner for international travel, visa consultancy, and global opportunities. We make your journey seamless.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+                <li class="flex items-center gap-2">📍 Accra, Ghana</li>
+                <li class="flex items-center gap-2">📞 +233 (0) 24 XXX XXXX</li>
+                <li class="flex items-center gap-2">✉️ info@kahadytravel.com</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-blue-100">
+                <a href="about.html" class="hover:underline">About Us</a>
+                <a href="services.html" class="hover:underline">Our Services</a>
+                <a href="destinations.html" class="hover:underline">Destinations</a>
+                <a href="application.html" class="hover:underline">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-300">
+        &copy; 2026 Kahady Travel and Tour. All Rights Reserved.
+    </div>
+</footer>
+</body>
+</html>

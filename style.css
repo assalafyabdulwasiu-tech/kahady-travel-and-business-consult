@@ -1,0 +1,125 @@
+
+
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+    background-color: white;
+    background-image: url(images/logo.jpeg);
+}
+
+/* Hero Section with Travel Background */
+.hero-bg {
+    background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 33, 71, 0.7)), 
+                url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover {
+    color: #2563eb;
+    transition: 0.2s;
+}
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+/* Announcement Pulse */
+.announcement-tag {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+/* The Hamburger Button */
+#menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#menu-icon span {
+    width: 30px;
+    height: 4px;
+    background-color: #002147; /* FFA Blue */
+    border-radius: 2px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: -250px; /* Start hidden on the left */
+    background-color: #2ddb7b;
+    overflow-x: hidden;
+    transition: 0.5s; /* Smooth slide speed */
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #2e7d32; /* FFA Green */
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}

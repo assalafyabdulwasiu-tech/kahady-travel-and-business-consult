@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Kahady Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.tailwind || document.write('<link rel="stylesheet" href="style.css">');</script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        // 1. SECURITY CHECK: If not logged in, kick out to login page
+        if (sessionStorage.getItem('isAdmin') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // 2. Initialize EmailJS (REPLACE WITH YOUR PUBLIC KEY)
+        (function(){
+            emailjs.init("UUSTPBnxVqWawBYxD"); 
+        })();
+        function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+
+    <aside class="w-64 bg-blue-900 text-white flex-col hidden md:flex">
+        <div class="p-6">
+            <h2 class="text-xl font-black tracking-tighter">KAHADY ADMIN</h2>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <a href="index.html" class="block p-3 rounded hover:bg-blue-800 transition text-sm">View Website</a>
+            <button onclick="logout()" class="w-full text-left p-3 rounded hover:bg-red-600 transition text-sm mt-10">Secure Logout</button>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+        
+        <div class="flex justify-between items-center mb-10">
+            <h1 class="text-3xl font-bold text-gray-800">Management Hub</h1>
+            <button onclick="downloadCSV()" class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 transition flex items-center gap-2">
+                Export to Excel
+            </button>
+        </div>
+
+        <section class="bg-white p-6 rounded-2xl shadow-sm mb-8 border-l-4 border-yellow-500">
+            <h2 class="text-lg font-bold mb-4">📢 Update Home Announcements</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <input type="text" id="annTitle" placeholder="Announcement Headline" class="p-3 border rounded-lg outline-none focus:ring-2 focus:ring-yellow-400">
+                <input type="text" id="annBody" placeholder="Short Details" class="p-3 border rounded-lg outline-none focus:ring-2 focus:ring-yellow-400">
+            </div>
+            <button onclick="updateNotice()" class="mt-4 bg-yellow-500 text-blue-900 font-bold px-6 py-2 rounded-lg hover:bg-yellow-600 transition">Post News</button>
+        </section>
+
+        <section class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <div class="p-6 border-b bg-gray-50 flex justify-between items-center">
+                <h2 class="font-bold text-gray-700">Recent Applications</h2>
+                <span id="appCount" class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">0 Total</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-50 text-gray-400 text-[10px] uppercase font-black">
+                        <tr>
+                            <th class="p-4">Customer</th>
+                            <th class="p-4">Service</th>
+                            <th class="p-4">Status</th>
+                            <th class="p-4 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appTableBody" class="text-sm">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="replyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+        <div class="bg-white w-full max-w-md p-8 rounded-3xl shadow-2xl">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Send Result</h3>
+            <p class="text-xs text-gray-400 mb-6" id="targetCustomer"></p>
+            <form id="replyForm" class="space-y-4">
+                <input type="hidden" id="replyEmail">
+                <textarea id="adminMsg" rows="5" class="w-full p-4 border rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your message to the customer..."></textarea>
+                <div class="flex gap-2">
+                    <button type="button" onclick="closeReply()" class="flex-1 py-3 bg-gray-100 rounded-xl font-bold text-gray-500">Cancel</button>
+                    <button type="submit" class="flex-1 py-3 bg-blue-700 text-white rounded-xl font-bold shadow-lg hover:bg-blue-800">Send Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA LOADING ---
+        function loadApplications() {
+            const apps = JSON.parse(localStorage.getItem('kahady_apps')) || [];
+            const tableBody = document.getElementById('appTableBody');
+            document.getElementById('appCount').innerText = apps.length + " Total";
+            tableBody.innerHTML = "";
+
+            if(apps.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-gray-300">No applications found.</td></tr>';
+                return;
+            }
+
+            apps.forEach((app, index) => {
+                let statusClass = app.status === "Approved" ? "bg-green-100 text-green-700" : (app.status === "Rejected" ? "bg-red-100 text-red-700" : "bg-yellow-100 text-yellow-700");
+                
+                tableBody.innerHTML += `
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-4">
+                            <div class="font-bold text-gray-800">${app.name}</div>
+                            <div class="text-[10px] text-gray-400">${app.email}</div>
+                        </td>
+                        <td class="p-4 text-xs font-medium text-gray-600">${app.service}</td>
+                        <td class="p-4">
+                            <select onchange="updateStatus(${index}, this.value)" class="text-[10px] font-bold px-2 py-1 rounded ${statusClass} border-none outline-none cursor-pointer">
+                                <option value="Pending" ${app.status === 'Pending' ? 'selected' : ''}>PENDING</option>
+                                <option value="Approved" ${app.status === 'Approved' ? 'selected' : ''}>APPROVED</option>
+                                <option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>REJECTED</option>
+                            </select>
+                        </td>
+                        <td class="p-4 text-center">
+                            <div class="flex gap-2 justify-center">
+                                <button onclick="openReply('${app.name}', '${app.email}')" class="bg-blue-600 text-white px-3 py-1 rounded text-[10px] font-bold">REPLY</button>
+                                <button onclick="deleteApp(${index})" class="text-red-400 hover:text-red-600 text-[10px] font-bold">DELETE</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // --- EMAIL LOGIC ---
+        function openReply(name, email) {
+            document.getElementById('targetCustomer').innerText = "To: " + name + " (" + email + ")";
+            document.getElementById('replyEmail').value = email;
+            document.getElementById('replyModal').classList.remove('hidden');
+        }
+
+        function closeReply() { document.getElementById('replyModal').classList.add('hidden'); }
+
+        document.getElementById('replyForm').onsubmit = function(e) {
+            e.preventDefault();
+            const serviceID = "YOUR_SERVICE_ID"; // Replace
+            const templateID = "YOUR_TEMPLATE_ID"; // Replace
+
+            const params = {
+                to_email: document.getElementById('replyEmail').value,
+                message: document.getElementById('adminMsg').value,
+                from_name: "Kahady Travel"
+            };
+
+            emailjs.send(serviceID, templateID, params).then(() => {
+                alert("Email Sent!");
+                closeReply();
+            });
+        };
+
+        // --- HELPERS ---
+        function updateStatus(index, val) {
+            let apps = JSON.parse(localStorage.getItem('kahady_apps'));
+            apps[index].status = val;
+            localStorage.setItem('kahady_apps', JSON.stringify(apps));
+            loadApplications();
+        }
+
+        function deleteApp(index) {
+            if(confirm("Delete this record?")) {
+                let apps = JSON.parse(localStorage.getItem('kahady_apps'));
+                apps.splice(index, 1);
+                localStorage.setItem('kahady_apps', JSON.stringify(apps));
+                loadApplications();
+            }
+        }
+
+        function updateNotice() {
+            const notice = { title: document.getElementById('annTitle').value, body: document.getElementById('annBody').value, date: new Date().toLocaleDateString() };
+            localStorage.setItem('kahady_notice', JSON.stringify(notice));
+            alert("Home Page Updated!");
+        }
+
+        function downloadCSV() {
+            const apps = JSON.parse(localStorage.getItem('kahady_apps')) || [];
+            let csv = "Name,Email,Service,Status,Date\n";
+            apps.forEach(a => { csv += "${a.name}","${a.email}","${a.service}","${a.status}","${a.date}"/n; });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Kahady_Reports.csv');
+            a.click();
+        }
+
+        function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
+
+        window.onload = loadApplications;
+    </script>
+</body>
+</html>

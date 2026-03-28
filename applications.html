@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Applications | Kahady</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.tailwind || document.write('<link rel="stylesheet" href="style.css">');</script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 min-h-screen pb-20">
+    <div id="menu-icon" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+    <div class="sidebar-logo">
+        <img src=""FFA Logo" width="100">
+        <h3>KAHADY ADMIN</h3>
+    </div>
+    <a href="index.html" class="nav-item">Dashboard Home</a>
+        <a href="about.html" class="nav-item active">About Us</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="applications.html" class="nav-item">Application</a>
+        <a href="dashboard.html" class="nav-item">Admin Dashboard</a>
+         <a href="destinations.html" class="nav-item">Destinations</a>
+          <a href="login.html" class="nav-item">login</a>
+            <a href="opportunities.html" class="nav-item">opportunities</a>
+             <a href="payment.html" class="nav-item">payment</a>
+              <a href="services.html" class="nav-item">service</a>
+</div>
+
+    <div class="bg-blue-900 text-white py-10 text-center shadow-lg">
+        <h1 class="text-3xl font-bold">Service Application</h1>
+        <p class="opacity-80">Fill the form below to start your journey with Kahady</p>
+    </div>
+
+    <main class="max-w-2xl mx-auto mt-10 px-4">
+        <form id="mainAppForm" class="bg-white p-8 rounded-3xl shadow-xl space-y-6">
+            
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
+                <input type="text" id="custName" placeholder="Enter your full name" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                <input type="email" id="custEmail" placeholder="example@email.com" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">Select Service</label>
+                <select id="custService" class="w-full p-4 border rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Visa Processing">Visa Processing</option>
+                    <option value="Air Ticket Booking">Air Ticket Booking</option>
+                    <option value="Study Abroad">Study Abroad</option>
+                    <option value="Work Abroad">Work Abroad</option>
+                    <option value="Passport Assistance">Passport Assistance</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">WhatsApp Number</label>
+                <input type="tel" id="custPhone" placeholder="e.g. 0244000000" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-700 text-white font-bold py-4 rounded-xl hover:bg-blue-800 transition shadow-lg">
+                Submit Application
+            </button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('mainAppForm').onsubmit = function(e) {
+            e.preventDefault();
+
+            // 1. Capture the data
+            const newApp = {
+                name: document.getElementById('custName').value,
+                email: document.getElementById('custEmail').value, // Saved here
+                service: document.getElementById('custService').value,
+                phone: document.getElementById('custPhone').value,
+                date: new Date().toLocaleDateString(),
+                status: "Pending"
+            };
+
+            // 2. Get existing apps or start new list
+            const apps = JSON.parse(localStorage.getItem('kahady_apps')) || [];
+            
+            // 3. Add new app to the list
+            apps.push(newApp);
+
+            // 4. Save back to localStorage
+            localStorage.setItem('kahady_apps', JSON.stringify(apps));
+
+            alert("Applications Submitted Successfully!");
+            window.location.href = "payment.html"; // Redirect to payment
+        };
+        function toggleNav() {
+    var sidebar = document.getElementById("mySidebar");
+    
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px"; // Hide it
+    } else {
+        sidebar.style.left = "0px";    // Show it
+    }
+}
+    </script>
+     <footer class="bg-blue-900 text-white py-12 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <div>
+            <h3 class="text-xl font-bold mb-4">Kahady Travel And Business Consult</h3>
+            <p class="text-blue-200 text-sm leading-relaxed">
+                Your premier partner for international travel, visa consultancy, and global opportunities. We make your journey seamless.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <ul class="text-blue-100 space-y-2 text-sm">
+                <li class="flex items-center gap-2">📍 Accra, Ghana</li>
+                <li class="flex items-center gap-2">📞 +233 (0) 24 XXX XXXX</li>
+                <li class="flex items-center gap-2">✉️ info@kahadytravel.com</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-blue-100">
+                <a href="about.html" class="hover:underline">About Us</a>
+                <a href="services.html" class="hover:underline">Our Services</a>
+                <a href="destinations.html" class="hover:underline">Destinations</a>
+                <a href="applications.html" class="hover:underline">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-300">
+        &copy; 2026 kahady Travel And Business Consult. All Rights Reserved.
+    </div>
+</footer>
+</body>
+</html>
