@@ -9,6 +9,10 @@ body {
     margin: 0;
     background-color: white;
     background-image: url(images/logo.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 300px;
 }
 
 /* Hero Section with Travel Background */
